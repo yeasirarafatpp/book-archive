@@ -35,7 +35,7 @@ const loadCounter = async () => {
     const searchField = document.getElementById('search-text');
     const searchText = searchField.value;
     searchField.value = '';
-    const url = `http://openlibrary.org/search.json?q=${searchText}`;
+    const url = `https://openlibrary.org/search.json?q=${searchText}`;
     const res = await fetch(url);
     const data = await res.json();
     const counter = document.getElementById('counter');
@@ -47,7 +47,7 @@ const loadCounter = async () => {
 }
 // Show Image on click Div
 const loadImage = async (imageId) => {
-    const url = `http://covers.openlibrary.org/b/id/${imageId}-M.jpg`;
+    const url = `https://covers.openlibrary.org/b/id/${imageId}-M.jpg`;
     const showImage = document.getElementById('image');
     showImage.innerHTML = `
     <h3>Book Cover Image</h3>
