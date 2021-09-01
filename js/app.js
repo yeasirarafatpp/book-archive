@@ -1,13 +1,14 @@
-// Load The API
-const loadBook = () => {
+// Load The API                    
+const loadBook = async () => {
+    loadCounter();
     const searchField = document.getElementById('search-text');
     const searchText = searchField.value;
     searchField.value = '';
     // console.log(searchText);
     const url = `http://openlibrary.org/search.json?q=${searchText}`;
-    fetch(url)
-        .then(res => res.json())
-        .then(data => displayBook(data.docs));
+    const res = await fetch(url);
+    const data = await res.json();
+    displayBook(data.docs);
 }
 // Display Book
 const displayBook = books => {
@@ -19,7 +20,7 @@ const displayBook = books => {
     }
     else {
         books.forEach(book => {
-            console.log(book);
+            // console.log(book);
             const div = document.createElement('div');
             div.classList.add('col');
             div.innerHTML = `
@@ -39,18 +40,19 @@ const displayBook = books => {
     }
 
 }
-
-
-// Count for show counter and not found result
-const loadCounter = () => {
+// Count for show counter
+const loadCounter = async () => {
     const searchField = document.getElementById('search-text');
     const searchText = searchField.value;
     searchField.value = '';
-    // console.log(searchText);
     const url = `http://openlibrary.org/search.json?q=${searchText}`;
-    fetch(url)
-        .then(res => res.json())
-        .then(data => console.log(data.numFound));
-
+    const res = await fetch(url);
+    const data = await res.json();
+    console.log(data);
+    const counter = document.getElementById('counter');
+    const p = document.createElement('p');
+    p.classList.add('container', 'text-info');
+    p.innerText = `Search Result ${data.numFound}`;
+    counter.appendChild(p);
+    displayBook(data.docs);
 }
-loadCounter();
