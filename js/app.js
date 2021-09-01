@@ -1,14 +1,6 @@
 // Load The API                    
 const loadBook = async () => {
     loadCounter();
-    const searchField = document.getElementById('search-text');
-    const searchText = searchField.value;
-    searchField.value = '';
-    // console.log(searchText);
-    const url = `http://openlibrary.org/search.json?q=${searchText}`;
-    const res = await fetch(url);
-    const data = await res.json();
-    displayBook(data.docs);
 }
 // Display Book
 const displayBook = books => {
@@ -19,6 +11,8 @@ const displayBook = books => {
         notFound.style.display = 'block';
     }
     else {
+        const notFound = document.getElementById('not-found');
+        notFound.style.display = 'none';
         books.forEach(book => {
             // console.log(book);
             const div = document.createElement('div');
@@ -34,11 +28,8 @@ const displayBook = books => {
                     </div>
             `;
             booksCard.appendChild(div);
-            const notFound = document.getElementById('not-found');
-            notFound.style.display = 'none';
         });
     }
-
 }
 // Count for show counter
 const loadCounter = async () => {
@@ -48,7 +39,6 @@ const loadCounter = async () => {
     const url = `http://openlibrary.org/search.json?q=${searchText}`;
     const res = await fetch(url);
     const data = await res.json();
-    console.log(data);
     const counter = document.getElementById('counter');
     const p = document.createElement('p');
     p.classList.add('container', 'text-info');
