@@ -14,7 +14,6 @@ const displayBook = books => {
         const notFound = document.getElementById('not-found');
         notFound.style.display = 'none';
         books.forEach(book => {
-            // console.log(book);
             const div = document.createElement('div');
             div.classList.add('col');
             div.innerHTML = `
@@ -46,11 +45,8 @@ const loadCounter = async () => {
     counter.appendChild(p);
     displayBook(data.docs);
 }
-
 // Show Image on click Div
-
 const loadImage = async (imageId) => {
-    // console.log(imageId);
     const url = `http://covers.openlibrary.org/b/id/${imageId}-M.jpg`;
     const showImage = document.getElementById('image');
     showImage.innerHTML = `
