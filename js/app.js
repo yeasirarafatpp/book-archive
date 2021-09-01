@@ -1,4 +1,4 @@
-// Load The API                    
+// Load The API By Function                  
 const loadBook = async () => {
     loadCounter();
 }
@@ -18,7 +18,7 @@ const displayBook = books => {
             const div = document.createElement('div');
             div.classList.add('col');
             div.innerHTML = `
-                    <div class="card">
+                    <div onclick="loadImage(${book.cover_i});" class="card">
                         <div class="card-body">
                             <h5 class="card-title">${book.title}</h5>
                             <p>By ${book.author_name}</p>
@@ -45,4 +45,15 @@ const loadCounter = async () => {
     p.innerText = `Search Result ${data.numFound}`;
     counter.appendChild(p);
     displayBook(data.docs);
+}
+
+// Show Image on click Div
+
+const loadImage = async (imageId) => {
+    // console.log(imageId);
+    const url = `http://covers.openlibrary.org/b/id/${imageId}-M.jpg`;
+    const showImage = document.getElementById('image');
+    showImage.innerHTML = `
+    <h3>Book Cover Image</h3>
+    <img src="${url}">`;
 }
