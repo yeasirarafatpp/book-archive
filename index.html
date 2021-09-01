@@ -7,6 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <style>
+        #not-found {
+            display: none;
+        }
+    </style>
     <title>Js API Library</title>
 </head>
 
@@ -18,8 +23,14 @@
             aria-label="Search Book" aria-describedby="search-btn">
         <button onclick="loadBook();" class="btn btn-outline-secondary" type="button" id="search-btn">Search</button>
     </div>
+    <!-- Show No Result -->
+    <div class="container text-center text-danger" id="not-found">
+        <p>No Result Found! Please Search Properly</p>
+    </div>
     <!-- Count Search Result -->
-    <p id="counter"></p>
+    <div id="counter">
+        <p></p>
+    </div>
     <!-- Show The Book On Card -->
     <div class="row row-cols-1 row-cols-md-3 g-4 container mx-auto" id="books">
     </div>
